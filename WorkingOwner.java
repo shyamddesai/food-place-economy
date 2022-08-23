@@ -1,4 +1,3 @@
-
 public class WorkingOwner extends Owner {
 
     private int targetTipPct;
@@ -6,7 +5,8 @@ public class WorkingOwner extends Owner {
     public WorkingOwner(String name, int targetTipPct) {
         /* TODO: Add your code here */
         /* TODO: Also edit the super call */
-        super(null);
+        super(name);
+        this.targetTipPct = targetTipPct;
     }
 
     public int getTargetTipPct() {

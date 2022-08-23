@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class FoodStand extends FoodPlace {
@@ -6,7 +6,7 @@ public class FoodStand extends FoodPlace {
     public FoodStand(String name, double fixedCosts, WorkingOwner owner) {
         /* TODO: Add your code here */
         /* TODO: Also edit the super call */
-        super(null,-1,null);
+        super(name, fixedCosts, owner);
     }
 
     @Override
@@ -24,19 +24,23 @@ public class FoodStand extends FoodPlace {
     public List<IncomeTaxPayer> getIncomeTaxPayers() {
         /* TODO: Add your code here */
         /* TODO: Also remove return statement below*/
-        return null;
-
+    	List<IncomeTaxPayer> taxPayers = new ArrayList<IncomeTaxPayer>();
+     	taxPayers.add(getOwner());
+       return taxPayers; //Returns an ArrayList containing the owner
     }
 
     @Override
     public void distributeIncomeAndSalesTax(Check check) {
         /* TODO: Add your code here */
+		getOwner().setIncome(getOwner().getIncome() + check.getMenuPrice() + check.getTip()); //Tip in Check is in actual $
+    	setTotalSalesTax(check.getSalesTax());
+    	//System.out.println("Owner Tip %: " + getTipPercentage() + "; Customer Tip %: " + 0.01*check.getTip() + "; Menu Price: " + check.getMenuPrice() + "; Owner: " + getOwner().getIncome());
     }
 
     @Override
     public double getTipPercentage() {
         /* TODO: Add your code here */
         /* TODO: Also remove return statement below*/
-        return -1;
+       return ((WorkingOwner) getOwner()).getTargetTipPct();
     }
 }

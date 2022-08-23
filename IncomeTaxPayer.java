@@ -1,4 +1,3 @@
-
 public abstract class IncomeTaxPayer {
 
 	private static int currentMaxTaxID;
@@ -8,6 +7,8 @@ public abstract class IncomeTaxPayer {
 
 	public IncomeTaxPayer(String name){
 		/* TODO: Add your code here */
+		this.name = name;
+		taxID = currentMaxTaxID++;
 	}
 
 	public static int getCurrentMaxTaxID() {
@@ -26,7 +27,7 @@ public abstract class IncomeTaxPayer {
 		return this.income;
 	}
 
-	public void setIncome( double income) {
+	public void setIncome(double income) {
 		this.income = income;
 	}
 
@@ -37,7 +38,9 @@ public abstract class IncomeTaxPayer {
 	public boolean equals(Object obj) {
 		/* TODO: Add your code here */
 		/* TODO: Also remove return statement below*/
-		return false;
+		if (obj instanceof IncomeTaxPayer) {
+			return this.taxID == ((IncomeTaxPayer) obj).getTaxID();  
+		} else return false;  
 	}
 
 	public abstract double calculateIncomeTax();

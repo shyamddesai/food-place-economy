@@ -1,4 +1,3 @@
-
 public class Staff extends IncomeTaxPayer {
 
 	private int salaryPerHour;
@@ -7,7 +6,9 @@ public class Staff extends IncomeTaxPayer {
 	public Staff(String name, boolean isCook) {
 		/* TODO: Add your code here */
 		/* TODO: Also edit the super call */
-		super(null);
+		super(name);
+		if(isCook) salaryPerHour = 20; //Cook salary
+		else salaryPerHour = 10; //Staff salary 
 	}
 
 	public int getSalaryPerHour() {
@@ -21,14 +22,14 @@ public class Staff extends IncomeTaxPayer {
 	public double workHours(int numHours) {
 		/* TODO: Add your code here */
 		/* TODO: Also remove return statement below*/
-		return -1;
+		setIncome(getIncome() + numHours*salaryPerHour);
+		return numHours*salaryPerHour;
 	}
 
 	@Override
 	public double calculateIncomeTax() {
 		/* TODO: Add your code here */
 		/* TODO: Also remove return statement below*/
-		return -1;
+		return getIncome()*0.01*incomeTaxPercentage;
 	}
-
 }

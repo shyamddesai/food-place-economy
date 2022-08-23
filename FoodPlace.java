@@ -1,4 +1,3 @@
-
 import java.util.List;
 
 public abstract class FoodPlace {
@@ -12,6 +11,11 @@ public abstract class FoodPlace {
 
     public FoodPlace(String name, double fixedCosts, Owner owner){
         /* TODO: Add your code here */
+    	this.name = name;
+    	this.fixedCosts = fixedCosts;
+    	this.owner = owner;
+    	foodPlaceID = currentMaxFoodPlaceID++;
+    	owner.setFoodPlace(this);
     }
 
     public static int getCurrentMaxFoodPlaceID() {
@@ -46,7 +50,9 @@ public abstract class FoodPlace {
     public boolean equals(Object obj) {
         /* TODO: Add your code here */
         /* TODO: Also remove return statement below*/
-        return false;
+		if (obj instanceof FoodPlace) {
+			return this.foodPlaceID == ((FoodPlace) obj).getFoodPlaceID();
+		} else return false;  		   
     }
 
     abstract void workShift(int hours);

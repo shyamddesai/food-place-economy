@@ -1,6 +1,4 @@
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -529,6 +527,7 @@ public class Test {
 		fs.distributeIncomeAndSalesTax(check1);
 		tc.collectTax();
 		int points = 0 ;
+		//System.out.println("*fpList:\n*" + fpList + "\n-----------------------"	+ "--------------------\n\n");
 		if(106.5 == tc.getSalesTaxCollected() && 163.9 == tc.getIncomeTaxCollected() ){
 			points += 4;
 			System.out.println("checkTaxCollector. Pass01");
